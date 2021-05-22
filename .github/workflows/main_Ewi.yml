@@ -59,4 +59,4 @@ jobs:
         with:
           app-name: 'Ewi'
           slot-name: 'production'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_4ce954a98b3444cdbc91364faa96ef67 }}
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_79b4b897787d48328aee6a715fddf23e }}
