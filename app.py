@@ -121,7 +121,7 @@ def edit(id):
                             
 
                                  where ewidencja.id=?'''
-                e_rec = db.execute(sql_command,(f_nazwa,f_nrew,f_nrser,f_zdalna,f_d_wydania,f_odb,f_pok,f_stanowisko,f_dzial,f_w_uwagi,f_d_zwrotu,f_IT_zwrot,f_z_uwagi,f_wyp,f_IT_wydal,id))    
+                e_rec = db.execute(sql_command,(f_nazwa,f_nrew,f_nrser,f_zdalna,f_d_wydania,f_odb,f_pok,f_stanowisko,f_dzial,f_w_uwagi,f_d_zwrotu,f_IT_zwrot,f_z_uwagi,f_wyposazenie,f_IT_wydal,id))    
                 db.commit()
             except:    
                 db.close()
