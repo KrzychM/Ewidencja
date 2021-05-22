@@ -99,7 +99,7 @@ def edit(id):
             db = get_db() 
 
             # zamiana listy na string
-            f_wyp = ','.join(f_wyposazenie)   
+            # f_wyp = ','.join(f_wyposazenie)   
             
             try:   
                 sql_command = '''update ewidencja 
