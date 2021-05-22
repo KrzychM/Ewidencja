@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pl">
+   <head>
+      <meta charset="utf-8">
+      <title>Nowy</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+   </head>
+   <body style="background-color: indigo;" class="page-footer-fixed">
+      <h1 style="vertical-align: middle; height: 90px; text-shadow: 3px 3px black; font-size:60px; color: white; background-color: indigo;"><a style="text-decoration: none; color: white" href="{{ url_for('index') }}">Ewidencja</a></h1>
+      <hr style="border: 4px solid white;">
+      <div class="container-fluid" style="margin-bottom: 3rem;">
+         <div>
+            <form method="POST" style="background-color: white;"action="{{ url_for('addnew') }}" id="newform" class="form-horizontal" role="form" data-parsley-validate novalidate>
+               <div class="container-fluid shadow">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group brdbot">
+                                 <h2>Nowy sprzęt</h2>
+                                 <hr>
+                                 <div class="controls col-sm-9">
+                                    <p id="field1" data-default-label="Header" data-default-is-header="true" data-control-type="header"></p>
+                                    <span id="errId1" class="error"></span>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="form-group row">
+                     <label for="nazwa" class="col-4 col-form-label">Model<span style="color:red;font-weight:bold">&nbsp;*</span></label>
+                     <div class="col-8">
+                        <input id="nazwa" name="nazwa" placeholder="Model sprzętu" type="text" class="form-control" required="required">
+                     </div>
+                  </div>
+                  <div class="form-group row">
+                     <label for="nrew" class="col-4 col-form-label">Nr ewidencyjny<span style="color:red;font-weight:bold">&nbsp;*</span></label>
+                     <div class="col-8">
+                        <input id="nrew" name="nrew" placeholder="Numer ewidencyjnt sprzętu" type="text" class="form-control" required="required">
+                     </div>
+                  </div>
+                  <div class="form-group row">
+                     <label for="nrser" class="col-4 col-form-label">Nr seryjny<span style="color:red;font-weight:bold">&nbsp;*</span></label>
+                     <div class="col-8">
+                        <input id="nrser" name="nrser" placeholder="Numer seryjny sprzętu" type="text" class="form-control" required="required">
+                     </div>
+                  </div>
+                  
+                  <div class="form-group row">
+                     <label for="zdalna" class="col-4 col-form-label">Czy wydany do pracy zdalnej?<span style="color:red;font-weight:bold">&nbsp;*</span></label>
+                     <div class="col-8">
+                        <select id="zdalna" name="zdalna" required="required" class="custom-select">
+                           <option value="TAK">TAK</option>
+                           <option value="NIE">NIE</option>
+                        </select>
+                     </div>
+                  </div>        
+                  <hr>
+                  <div class="form-group row">
+                     <label for="wyposazenie" class="col-4 col-form-label">Wyposażenie<span style="color:red;font-weight:bold">&nbsp;*</span></label>
+                     <div class="col-8">
+                        <select id="wyposazemie" multiple name="wyposazenie" required="required" class="custom-select">
+                           <option value="Torba">Torba</option>
+                           <option value="Mysz">Mysz</option>
+                           <option value="Zasilacz">Zasilacz</option>
+                           <option value="Kabel do zasilacza">Kabel do zasilacza</option>
+                           <option value="Napęd DVD">Napęd DVD</option>
+                           <option value="Stacja dokująca">Stacja dokująca</option>
+                           <option value="Inne">Inne (opis w uwagach)</option>
+
+                        </select>
+                     </div>
+                  </div> 
+                  <div class="form-group row">
+                     <label for="d_wydania" class="col-4 col-form-label">Data wydana<span style="color:red;font-weight:bold">&nbsp;*</span></label>
+                     <div class="col-8">
+                        <input id="d_wydania" name="d_wydania" placeholder="YYYY-MM-DD" type="text" class="form-control" required="required">
+                     </div>
+                  </div>
+                  <div class="form-group row">
+                     <label for="IT_wydal" class="col-4 col-form-label">Wydający<span style="color:red;font-weight:bold">&nbsp;*</span></label>
+                     <div class="col-8">
+                        <input id="IT_wydal" name="IT_wydal" placeholder="Imię i Nazwisko osoby wydającej sprzęt" type="text" class="form-control" required="required">
+                     </div>
+                  </div>
+                  <div class="form-group row">
+                     <label for="odb" class="col-4 col-form-label">Użytkownik<span style="color:red;font-weight:bold">&nbsp;*</span></label>
+                     <div class="col-8">
+                        <input id="odb" name="odb" placeholder="Imię i Nazwisko użytkownika sprzętu" type="text" class="form-control" required="required">
+                     </div>
+                  </div>
+
+                  <div class="form-group row">
+                     <label for="pok" class="col-4 col-form-label">Pokój<span style="color:red;font-weight:bold">&nbsp;*</span></label>
+                     <div class="col-8">
+                        <input id="odb" name="pok" placeholder="Numer pokoju" type="text" class="form-control" required="required">
+                     </div>
+                  </div>
+
+                  <div class="form-group row">
+                     <label for="stanowisko" class="col-4 col-form-label">Stanowisko<span style="color:red;font-weight:bold">&nbsp;*</span></label>
+                     <div class="col-8">
+                        <select id="stanowisko" name="stanowisko" required="required" class="custom-select">
+                           <option value="Sędzia">Sędzia</option>
+                           <option value="Asystent">Asystent</option>
+                           <option value="Pracownik">Pracownik</option>
+                           <option value="Inny">Inny</option>
+                        </select>
+                     </div>
+                  </div>      
+                  <div class="form-group row">
+                     <label for="dzial" class="col-4 col-form-label">Dział<span style="color:red;font-weight:bold">&nbsp;*</span></label>
+                     <div class="col-8">
+                        <select id="dzial" name="dzial" required="required" class="custom-select">
+                           <option value="I Wydział Cywilny">I Wydział Cywilny</option>
+                           <option value="II Wydział Karny">II Wydział karny</option>
+                           <option value="III Wydział Pracy">III Wydział Pracy</option>
+                           <option value="IV Wydział Wizytacji">IV Wydział Wizytacji</option>
+                           <option value="V Wydział Cywilny">V Wydział Cywilny</option>
+                           <option value="Oddział Administracji">Oddział Adminstracji</option>
+                           <option value="Oddział Finansowy">Oddział Finansowy</option>
+                           <option value="Oddział Gospodarczy">Oddział Gospodarczy</option>
+                           <option value="Oddział Kadr">Oddział Kadr</option>
+                           <option value="Oddział Inwestycji">Oddział Inwestycji</option>
+                           <option value="Oddział Informatyczny">Oddział Informatyczny</option>
+                           <option value="Sekcja Kontroli">Sekcja Kontroli</option>
+                           <option value="Sekcja Ochrony">Sekcja Ochrony</option>
+                           <option value="Sekcja Planowania i Analiz">Sekcja Planowania i Analiz</option>
+                           <option value="Sekretariat Dyrektora">Sekretariat Dyrektora</option>
+                           <option value="Sekretariat Prezesa">Sekretariat Prezesa</option>
+                        </select>
+                     </div>
+                  </div>
+                  <div class="form-group row">
+                     <label for="w_uwagi" class="col-4 col-form-label">Uwagi wydającego</label>
+                     <div class="col-8">
+                        <input id="w_uwagi" name="w_uwagi" type="text" class="form-control" required="required">
+                     </div>
+                  </div>
+                  
+                  <hr>
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="form-group pull-right">
+                           
+                           <a href="{{ url_for('index') }}" class="btn btn-danger">Anuluj</a> <button type="submit" class="btn btn-success" form="newform" value="Submit">Zapisz</button>
+                           
+                        </div>
+                     </div>
+                  </div>
+               </div>
+         </div>
+      </div>
+      </div>
+      </form>
+      </div>
+      </div>
+      
+      <div>
+         <footer>
+            <div style="align-content: center;">
+               <h6 style="text-align: center; vertical-align: middle; height: 30px; font-size:24px; color:gainsboro; background-color: mediumpurple ;">Gdańsk 2021</h6>
+            </div>
+         </footer>
+      </div>
+      <script src="https://cdn.kendostatic.com/2014.1.318/js/jquery.min.js"></script>
+      <!-- <script scr="{{ url_for('static', filename='js/jquery-3.6.0.min.js') }}"></script> -->
+      <script src="https://cdn.kendostatic.com/2014.1.318/js/kendo.all.min.js"></script>
+      <!-- <script scr="{{ url_for('static', filename='js/kendo.all.min.js') }}"></script> -->
+      <script src="https://protostrap.com/Assets/protostrap.js" type="text/javascript"></script>
+      <!-- <script scr="{{ url_for('static', filename='js/protostrap.js') }}" type="text/javascript"></script> -->
+   </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body onload="window.print()">
+    <div style="margin-left: 0.3rem; margin-right: 0.3rem; margin-bottom: 0.5rem;">
+        <table style="margin-top: 6px; width: 100%;">
+
+            <tbody style=" font-size: 16px;">
+                {% for os in os_rows %}
+                <tr>
+                    <td colspan="5" style="text-align: right;">Gdańsk, {{ os['d_wydania'] }}
+
+                        <p style="font-size:200%"></p>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5" style="text-align: center;">
+                        <h3><br><br>Oświadczenie o przejęciu pełnej odpowiedzialności materialnej <br>za powierzony sprzęt komputerowy
+                        </h3>
+
+                        <p style="font-size:500%"></p>
+                </tr>
+                <tr>
+                    <td colspan="5" style="text-align: left;">W związku z przekazaniem mi do użytkowania notebooka <b>{{ os['nazwa'] }}</b> o nr seryjnym <b>{{ os['nrser'] }}</b> oraz nr inwentarzowym <b>{{ os['nrew'] }}</b> oświadczam, że przejmuję pełną odpowiedzialność materialną za powierzony
+                        mi sprzęt.<br><br> Jednocześnie zobowiązuję się do okazywania w wyznaczonym terminie zespołowi spisowemu użytkowanego przeze mnie sprzętu celem jego ujęcia w corocznej inwentaryzacji majątku ruchomego Sądu.
+
+                        <p style="font-size:1000%"></p>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="text-align: left;">Podpis osoby odpowiedzialnej materialnie:</td>
+                    <td></td>
+                    <td style="text-align: center;"></td>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    </td>
+                    <td colspan="5" style="text-align: left;">
+                        <p style="font-size:300%"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="text-align: left;margin-left: 20px;">{{ os['odb'] }}</td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+                {% endfor %}
+
+            </tbody>
+
+
+        </table>
+
+    </div>
+</body>
+
+</html>

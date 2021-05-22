@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protokół</title>
+</head>
+
+<body onload="window.print()">
+    {% for pr in pr_rows %}
+    <div style="margin-left: 0.3rem; margin-right: 0.3rem; margin-bottom: 0.5rem;">
+        <table style="margin-top: 6px; width: 100%;">
+
+            <tbody style=" font-size: 16px;">
+
+                <tr>
+                    <td colspan="5" style="text-align: right;">Gdańsk, {{ pr['d_wydania'] }}
+
+                        <p style="font-size:200%"></p>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5" style="text-align: center;">
+                        <h2><br><br>PROTOKÓŁ PRZEKAZANIA</h2>
+
+                        <p style="font-size:500%"></p>
+                </tr>
+                <tr>
+                    <td colspan="5" style="text-align: left;"> Notebook <b>{{ pr['nazwa'] }}</b> nr ser. <b>{{ pr['nrser'] }}</b>, nr ewidencyjny <b>{{ pr['nrew'] }}</b> – 1 szt.
+                        <br>
+                        <br>
+                        <p>Wyposażenie:</p>
+                        {% if pr['wyposazenie'] != none %} {{ pr['wyposazenie'] }} {% endif %}
+
+
+                        <p style="font-size:1000%"></p>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="text-align: center;">Przekazujący:</td>
+                    <td></td>
+                    <td style="text-align: center;">Przyjmujący:</td>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    </td>
+                    <td colspan="5" style="text-align: left;">
+                        <p style="font-size:300%"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="text-align: center;">{{ pr['IT_wydal'] }}</td>
+                    <td></td>
+                    <td style="text-align: center;">{{ pr['odb'] }}</td>
+
+                    <td></td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        {% if pr['wyd_uwagi'] != none %} 
+        <br style="line-height: 300%;">
+        <b>Uwagi:</b>
+        <p style="text-align: left;margin-top: 20px;margin-bottom: 20px;">{{ pr['wyd_uwagi'] }}</p>
+
+        {% endif %}
+
+    </div>
+
+    {% endfor %}
+</body>
+
+</html>

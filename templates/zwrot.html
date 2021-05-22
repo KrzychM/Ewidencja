@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zwrot</title>
+</head>
+<body onload="window.print()">
+    {% for zw in zw_rows %}
+    <div style="margin-left: 0.3rem; margin-right: 0.3rem; margin-bottom: 0.5rem;">
+        <table style="margin-top: 6px; width: 100%;">
+            
+            <tbody style=" font-size: 16px;">
+                    <tr>
+                        <td colspan="5" style="text-align: right;">Gdańsk, {{ zw['d_zwrotu'] }}
+                        
+                            <p style="font-size:200%"></p>
+                        
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align: center;"><h2><br><br>PROTOKÓŁ ZWROTU SPRZĘTU</h2>
+                        
+                            <p style="font-size:500%"></p>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align: left;"> Notebook <b>{{ zw['nazwa'] }}</b> nr ser. <b>{{ zw['nrser'] }}</b>, nr ewidencyjny <b>{{ zw['nrew'] }}</b> – 1 szt.
+                            <br>
+                            <br>
+                            <p>Wyposażenie:</p>
+                            {% if zw['wyposazenie'] is none %} {% else %} {{ zw['wyposazenie'] }} {% endif %}
+    
+    
+                            <p style="font-size:1000%"></p>
+                        </td>
+                        
+                    </tr>
+					<tr>
+					
+					<td colspan="5" style="text-align: left;"> 
+					
+					Podpis pracownika Sądu odpowiedzialnego za sprawdzenie kompletności sprzętu złożony<br>w obecności osoby oddającej sprzęt.
+
+					<td>
+					
+					</tr>
+					      
+                     <tr>           
+                        
+                        <td colspan="5" style="text-align: left;">
+                        <p style="font-size:300%"></p>            
+                        </td>      
+                    </tr>
+                    <tr>
+                        
+                        <td colspan="5">{{ zw['IT_zwrot'] }}</td>                            
+                         
+                     </tr>
+
+					
+            </tbody>    
+            
+
+        </table>
+
+        {% if zw['zw_uwagi'] != none %}
+        <br style="line-height: 300%;">
+        <b>Uwagi:</b>
+        <p style="text-align: left;margin-top: 20px;margin-bottom: 20px;">{{ zw['zw_uwagi'] }}</p>
+
+        {% endif %}
+
+</div> 
+{% endfor %}
+</body>
+</html>

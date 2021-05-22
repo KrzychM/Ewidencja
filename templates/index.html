@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ewidencja</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body style="padding-left: 0rem; padding-right: 0rem; font-family: sans-serif;">
+
+    <div>
+        <h1 style="vertical-align: middle; height: 90px; text-shadow: 3px 3px black; font-size:60px; color: white; background-color: indigo;"><a style="text-decoration: none; color: white" href="{{ url_for('index') }}">Ewidencja</a></h1>
+        <h4>Ilość rekordów:&nbsp{{ ilosc }}</h4>
+        <div class="row" style="margin-left: 0.3rem; margin-right: 0.3rem;">
+            <input type="search" placeholder="Szukaj" class="form-control search-input" data-table="ewidencja-list" />
+        </div>
+        <div style="width: min-content; margin-top: 0.5rem; margin-left: 0.3rem;">
+            <a href="{{ url_for('new') }}" class="btn btn-outline-primary">Nowy</a>
+        </div>
+        <div style="margin-left: 0.3rem; margin-right: 0.3rem; margin-bottom: 0.5rem;">
+            <table class="ewidencja-list table table-hover table-bordered table-striped table-condensed table table-sm" class="center" style="margin-top: 6px; 
+            width: 100%; 
+            border: 1px solid black; 
+            border-collapse: collapse; 
+            text-align: center; 
+            font-size: 16px; font-weight: bold;" id="myTable">
+                <colgroup>
+                    <col width="12%">
+                    <col width="8%">
+                    <col width="8%">
+                    <col width="8%">
+                    <col width="14%">
+                    <col width="8%">
+                    <col width="25.2%">
+
+                </colgroup>
+                <thead style="background: black; color: floralwhite;">
+                    <tr>
+                        <th>Nazwa</th>
+                        <th>Nr ewidencyjny</th>
+                        <th>Nr seryjny</th>
+                        <th>Stanowisko</th>
+                        <th>Użytkownik</th>
+                        <th>Pokój</th>
+                        <th>Dział</th>
+
+                    </tr>
+                </thead>
+                <tbody class="panel">
+                    
+                    {% for r in rows %}
+                    <tr data-toggle="collapse" data-target="#d-{{ r['id'] }}" data-parent="#myTable">
+                            
+                        <td>{{ r['nazwa'] }}</td>
+                        <td>{{ r['nrew'] }}</td>
+                        <td>{{ r['nrser'] }}</td>
+                        <td>{{ r['Stanowisko'] }}</td>
+                        <td>{{ r['odb'] }}</td>
+                        <td>{{ r['pok'] }}</td>
+                        <td>{{ r['dzial'] }}</td>
+                        
+                    </tr>
+                    <tr style="margin: auto; text-align: left; font-weight: normal; font-size: 14px;" id="d-{{ r['id'] }}" class="collapse">
+                        <td class="hiddenRow">
+                            <div>Wydał:&nbsp{{ r['IT_wydal'] }}</div>
+                        </td>
+                        <td class="hiddenRow">
+                            <div>Wydano:&nbsp{{ r['d_wydania'] }}</div>
+                        </td>
+                        <td colspan="2" class="hiddenRow">
+                            
+                            <div>Odebrał:&nbsp{% if  r["IT_zwrot"] != None %} {{ r["IT_zwrot"] }} {% endif %}</div>
+
+                           
+                        </td>
+                        <td class="hiddenRow">
+                            <div>Zwrot:&nbsp{% if  r["d_zwrotu"] != None %} {{ r["d_zwrotu"] }} {% endif %}</div>
+                            
+                        </td>
+                        <td class="hiddenRow">
+                            
+                            <div>Praca zdalna:&nbsp{% if  r["zdalna"] != None %} <b>{{ r["zdalna"] }}</b> {% endif %}</div>
+                        </td>
+                        
+                        <td class="hiddenRow;text-center">
+
+                            <div><a href="/protokol/{{ r['id'] }}" class="btn-sm btn-outline-secondary" target="_blank">Protokół</a>
+
+                                <a href="/oswiadczenie/{{ r['id'] }}" class="btn-sm btn-outline-dark" target="_blank">Oświadczenie</a>
+                            {% if r["d_zwrotu"] != None %}    
+								<a href="/zwrot/{{ r['id'] }}" class="btn-sm btn-outline-info" target="_blank">Zwrot</a>
+							{% endif %}	
+                               
+                                <a href="/edit/{{ r['id'] }}" class="btn-sm btn-outline-success">Edytuj</a>
+                                <!-- <a href="" class="btn-sm btn-outline-primary">Info</a> -->
+                                <a href="/rodo/{{ r['id'] }}" class="btn-sm btn-outline-warning" target="_blank">RODO</a>
+                                <a href="/usun/{{ r['id'] }}" class="btn-sm btn-outline-danger">Usuń</a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <footer>
+                <div style="align-content: center;">
+                    <h6 style="text-align: center; vertical-align: middle; height: 30px; font-size:24px; color:gainsboro; background-color: mediumpurple ;">Gdańsk 2021</h6>
+                </div>
+            </footer>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        <!-- skrypt odpowiedzialny za wyszukiwanie danych na stronie -->
+
+        <script>
+            (function(document) {
+                'use strict';
+
+                var TableFilter = (function(myArray) {
+                    var search_input;
+
+                    function _onInputSearch(e) {
+                        search_input = e.target;
+                        var tables = document.getElementsByClassName(search_input.getAttribute('data-table'));
+                        myArray.forEach.call(tables, function(table) {
+                            myArray.forEach.call(table.tBodies, function(tbody) {
+                                myArray.forEach.call(tbody.rows, function(row) {
+                                    var text_content = row.textContent.toLowerCase();
+                                    var search_val = search_input.value.toLowerCase();
+                                    row.style.display = text_content.indexOf(search_val) > -1 ? '' : 'none';
+                                });
+                            });
+                        });
+                    }
+
+                    return {
+                        init: function() {
+                            var inputs = document.getElementsByClassName('search-input');
+                            myArray.forEach.call(inputs, function(input) {
+                                input.oninput = _onInputSearch;
+                            });
+                        }
+                    };
+                })(Array.prototype);
+
+                document.addEventListener('readystatechange', function() {
+                    if (document.readyState === 'complete') {
+                        TableFilter.init();
+                    }
+                });
+
+            })(document);
+        </script>
+</body>
+
+</html>
