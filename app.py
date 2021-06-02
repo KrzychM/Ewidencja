@@ -19,7 +19,7 @@ def index():
 
     
     db = get_db()
-    rec = db.execute('select * from ewidencja where czyus=0')    
+    rec = db.execute('select * from ewidencja where czyus=0 order by odb')    
     db.commit()    
 
     rows = rec.fetchall()
