@@ -54,13 +54,13 @@
                     {% for r in rows %}
                     <tr data-toggle="collapse" data-target="#d-{{ r['id'] }}" data-parent="#myTable">
                             
-                        <td>{{ r['nazwa'] }}</td>
-                        <td>{{ r['nrew'] }}</td>
-                        <td>{{ r['nrser'] }}</td>
-                        <td>{{ r['Stanowisko'] }}</td>
-                        <td>{{ r['odb'] }}</td>
-                        <td>{{ r['pok'] }}</td>
-                        <td>{{ r['dzial'] }}</td>
+                        <td {% if r['d_zwrotu']|length > 0 %} style="color: red;" {% endif %}>{{ r['nazwa'] }}</td>
+                        <td {% if r['d_zwrotu']|length > 0 %} style="color: red;" {% endif %}>{{ r['nrew'] }}</td>
+                        <td {% if r['d_zwrotu']|length > 0 %} style="color: red;" {% endif %}>{{ r['nrser'] }}</td>
+                        <td {% if r['d_zwrotu']|length > 0 %} style="color: red;" {% endif %}>{{ r['Stanowisko'] }}</td>
+                        <td {% if r['d_zwrotu']|length > 0 %} style="color: red;" {% endif %}>{{ r['odb'] }}</td>
+                        <td {% if r['d_zwrotu']|length > 0 %} style="color: red;" {% endif %}>{{ r['pok'] }}</td>
+                        <td {% if r['d_zwrotu']|length > 0 %} style="color: red;" {% endif %}>{{ r['dzial'] }}</td>
                         
                     </tr>
                     <tr style="margin: auto; text-align: left; font-weight: normal; font-size: 14px; background-color: transparent;" id="d-{{ r['id'] }}" class="collapse">
@@ -90,7 +90,10 @@
                             <div><a href="/protokol/{{ r['id'] }}" class="btn-sm btn-outline-secondary" target="_blank">Protokół</a>
 
                                 <a href="/oswiadczenie/{{ r['id'] }}" class="btn-sm btn-outline-dark" target="_blank">Oświadczenie</a>
-                            	<a href="/zwrot/{{ r['id'] }}" class="btn-sm btn-outline-info" target="_blank">Zwrot</a>
+                            	
+                                {% if r['d_zwrotu']|length > 0 %} 
+								<a href="/zwrot/{{ r['id'] }}" class="btn-sm btn-outline-info" target="_blank">Zwrot</a>
+                                {% endif %}
 								
                                
                                 <a href="/edit/{{ r['id'] }}" class="btn-sm btn-outline-success">Edytuj</a>

@@ -68,7 +68,8 @@
 
         </table>
 
-        {% if pr['wyd_uwagi'] != none %} 
+        {% if pr['wyd_uwagi']|length > 0 %}
+         
         <br style="line-height: 300%;">
         <b>Uwagi:</b>
         <p style="text-align: left;margin-top: 20px;margin-bottom: 20px;">{{ pr['wyd_uwagi'] }}</p>
