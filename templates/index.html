@@ -99,12 +99,29 @@
                                 <a href="/edit/{{ r['id'] }}" class="btn-sm btn-outline-success">Edytuj</a>
                                 <!-- <a href="" class="btn-sm btn-outline-primary">Info</a> -->
                                 <a href="/rodo/{{ r['id'] }}" class="btn-sm btn-outline-warning" target="_blank">RODO</a>
-                                <a href="/usun/{{ r['id'] }}" class="btn-sm btn-outline-danger">Usuń</a> <span style="color: transparent;">{{ r['odb'] }}</span>
+                                <a href="/usun/{{ r['id'] }}" class="btn-sm btn-outline-danger">Usuń</a> 
+								<span style="color: transparent; font-size: 0px;">{{ r['nazwa'] }}</span>
+								<span style="color: transparent; font-size: 0px;">{{ r['nrew'] }}</span>
+								<span style="color: transparent; font-size: 0px;">{{ r['nrser'] }}</span>
+								<span style="color: transparent; font-size: 0px;">{{ r['Stanowisko'] }}</span>
+								<span style="color: transparent; font-size: 0px;">{{ r['odb'] }}</span>
+								<span style="color: transparent; font-size: 0px;">{{ r['pok'] }}</span>
+								<span style="color: transparent; font-size: 0px;">{{ r['dzial'] }}</span>
                             </div>
                         </td>
                     </tr>
 					<tr style="margin: auto; text-align: left; font-weight: normal; font-size: 14px; background-color: transparent;" id="d-{{ r['id'] }}" class="collapse">
-					<td colspan="6">Wyposażenie:&nbsp {{ r["wyposazenie"] }} <span style="color: transparent;">{{ r['odb'] }}</span></td>
+					<td colspan="6">Wyposażenie:&nbsp {{ r["wyposazenie"] }} 
+					
+								<span style="color: transparent; font-size: 0px;">{{ r['nazwa'] }}</span>
+								<span style="color: transparent; font-size: 0px;">{{ r['nrew'] }}</span>
+								<span style="color: transparent; font-size: 0px;">{{ r['nrser'] }}</span>
+								<span style="color: transparent; font-size: 0px;">{{ r['Stanowisko'] }}</span>
+								<span style="color: transparent; font-size: 0px;">{{ r['odb'] }}</span>
+								<span style="color: transparent; font-size: 0px;">{{ r['pok'] }}</span>
+								<span style="color: transparent; font-size: 0px;">{{ r['dzial'] }}</span>
+					
+					</td>
 					</tr>
                     {% endfor %}
                     
